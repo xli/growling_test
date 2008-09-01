@@ -23,7 +23,7 @@ File.open(File.dirname(__FILE__) + '/growling_test.gemspec') do |f|
   end
 end
 
-Rake::TestTask.new(:test) do |t|
+Rake::TestTask.new(:mt) do |t|
   t.test_files = FileList['test/*test.rb']
   t.warning = true
   t.verbose = false

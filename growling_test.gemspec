@@ -4,7 +4,7 @@ require 'rake'
 require 'growling_test'
 
 Gem::Specification.new do |spec|
-  spec.name = 'GrowlingTest'
+  spec.name = 'growling_test'
   spec.version = GrowlingTest::VERSION
   spec.summary = "GrowlingTest is a tool for notifying test running status by Growl."
 
