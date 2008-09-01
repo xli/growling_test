@@ -1,0 +1,32 @@
+= Growling Test
+
+Supporting Growling Test version: 0.0.x
+
+GrowlingTest is a tool for notifying test running status by Growl.
+
+== Installation
+
+=== GEM Installation
+
+Download and install Growling Test with the following.
+
+   gem install --remote growling_test
+
+== License
+
+Growling Test is available under an Apache License Version 2.0.
+
+= Other stuff
+
+Author::  Li Xiao <iam@li-xiao.com> WPC <wpc@thoughtworks.com>
+Requires:: Ruby 1.8.6 or later
+License::  Copyright 2008 by Li Xiao & WPC.
+           Released under an Apache License Version 2.0.  See the LICENSE file
+           included in the distribution.
+
+== Warranty
+
+This software is provided "as is" and without any express or
+implied warranties, including, without limitation, the implied
+warranties of merchantibility and fitness for a particular
+purpose.

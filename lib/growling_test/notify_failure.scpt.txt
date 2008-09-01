@@ -1,0 +1,1 @@
+on run args	tell application "GrowlHelperApp"		notify with name "Growling Test Failure Notification" title item 1 of args description item 2 of args application name "Growling Test" image from location item 3 of args	end tellend run
