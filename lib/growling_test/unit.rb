@@ -24,7 +24,7 @@ module GrowlingTest
     
     def display_fault_with_growl(fault)
       method_name, class_name = names(fault.test_name)
-      Growl.instance.display_failure("#{fault.class.name.split("::").last}: #{class_name}", method_name)
+      Growl.instance.display_fault("#{fault.class.name.split("::").last}: #{class_name}", method_name)
     rescue Exception => e
     end
     

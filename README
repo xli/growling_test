@@ -3,6 +3,14 @@
 Supporting Growling Test version: 0.0.x
 
 GrowlingTest is a tool for notifying test running status by Growl.
+It is not for build notification, but for you can get test failure
+or other running status when you are do something else during test 
+running locally, and for fun.
+
+GrowlingTest is only supporting test_unit test framework right now.
+Feel free to submit commits for supporting any other test framework.
+
+GrowlingTest sends notification by AppleScript.
 
 == Installation
 

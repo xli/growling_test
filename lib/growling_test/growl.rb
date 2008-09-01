@@ -6,15 +6,11 @@ class Growl
   
   FILE_DIR = File.expand_path(File.dirname(__FILE__))
 
-  FINISHED_NOTIFY_SCPT = FILE_DIR + '/notify_finished.scpt.txt'
-  FINISHED_ICON = "#{FILE_DIR}/succeeded.png"
-  
-  ALL_FINISHED_NOTIFY_SCPT = FILE_DIR + '/notify_all_finished.scpt.txt'
-
-  FAILURE_NOTIFY_SCPT = FILE_DIR + '/notify_failure.scpt.txt'
-  FAILURE_ICON = "#{FILE_DIR}/failed.png"
-  
+  NOTIFY_SCPT = FILE_DIR + '/notify.scpt.txt'
   REGISTER_SCPT = FILE_DIR + '/register.scpt.txt'
+
+  FINISHED_ICON = "#{FILE_DIR}/succeeded.png"
+  FAILURE_ICON = "#{FILE_DIR}/failed.png"
   
   def self.available?
     system('which osascript')
@@ -33,25 +29,25 @@ class Growl
   
   def display_finished(title, content='')
     @queue << Proc.new do 
-      with_script_compiled(FINISHED_NOTIFY_SCPT) do |script|
-        system silent("osascript #{script} #{title.inspect} #{content.inspect} #{FINISHED_ICON.inspect}")
+      with_script_compiled(NOTIFY_SCPT) do |script|
+        system silent("osascript #{script} 'Test Finished' #{title.inspect} #{content.inspect} #{FINISHED_ICON.inspect}")
       end
     end
   end
   
-  def display_failure(title, content='')
+  def display_fault(title, content='')
     @success = false
     Thread.new do
-      with_script_compiled(FAILURE_NOTIFY_SCPT) do |script|
-        system silent("osascript #{script} #{title.inspect} #{content.inspect} #{FAILURE_ICON.inspect}")
+      with_script_compiled(NOTIFY_SCPT) do |script|
+        system silent("osascript #{script} 'Test Fault' #{title.inspect} #{content.inspect} #{FAILURE_ICON.inspect}")
       end
     end
   end
   
   def all_finished(title, content='')
-    with_script_compiled(ALL_FINISHED_NOTIFY_SCPT) do |script|
+    with_script_compiled(NOTIFY_SCPT) do |script|
       icon = (@success ? FINISHED_ICON : FAILURE_ICON).inspect
-      system silent("osascript #{script} #{title.inspect} #{content.inspect} #{icon}")
+      system silent("osascript #{script} 'All Tests Finished' #{title.inspect} #{content.inspect} #{icon}")
     end
   end
 
@@ -70,6 +66,6 @@ class Growl
   end
   
   def silent(script)
-    "#{script} >/dev/null 2>&1"
+    GROWLING_TEST_ENV == 'test' ? script : "#{script} >/dev/null 2>&1"
   end
 end
