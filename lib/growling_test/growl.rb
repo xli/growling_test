@@ -66,6 +66,6 @@ class Growl
   end
   
   def silent(script)
-    GROWLING_TEST_ENV == 'test' ? script : "#{script} >/dev/null 2>&1"
+    defined?(GROWLING_TEST_ENV) && GROWLING_TEST_ENV == 'test' ? script : "#{script} >/dev/null 2>&1"
   end
 end
