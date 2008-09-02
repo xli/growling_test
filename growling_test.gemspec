@@ -2,6 +2,7 @@ $:.unshift('lib')
 require 'rubygems'
 require 'rake'
 require 'growling_test'
+Test::Unit.run = true
 
 Gem::Specification.new do |spec|
   spec.name = 'growling_test'

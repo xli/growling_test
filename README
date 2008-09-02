@@ -16,9 +16,13 @@ GrowlingTest sends notification by AppleScript.
 
 === GEM Installation
 
-Download and install Growling Test with the following.
+Run the following if you haven't already:
 
-   gem install --remote growling_test
+gem sources -a http://gems.github.com
+
+Install the gem(s):
+
+sudo gem install xli-growling_test
 
 == License
 
