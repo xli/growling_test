@@ -13,7 +13,7 @@ class Growl
   FAILURE_ICON = "#{FILE_DIR}/failed.png"
   
   def self.available?
-    system('which osascript')
+    system('which osascript >/dev/null 2>&1')
   end
 
   def initialize
