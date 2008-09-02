@@ -2,7 +2,7 @@
 
 Supporting Growling Test version: 0.0.x
 
-GrowlingTest is a tool for notifying test running status by Growl.
+GrowlingTest is a tool for notifying test running status by Growl(http://growl.info/).
 It is not for build notification, but for you can get test failure
 or other running status when you are do something else during test 
 running locally, and for fun.
@@ -18,11 +18,20 @@ GrowlingTest sends notification by AppleScript.
 
 Run the following if you haven't already:
 
-gem sources -a http://gems.github.com
+  gem sources -a http://gems.github.com
 
-Install the gem(s):
+Install the gem:
 
-sudo gem install xli-growling_test
+  sudo gem install xli-growling_test
+
+== Usage
+
+After installed growling_test gem, put the following code in your test_helper.rb:
+
+  % require 'rubygems'
+  % require 'growling_test'
+  
+Also, you need Growl(http://growl.info/) installed.
 
 == License
 
