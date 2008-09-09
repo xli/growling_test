@@ -10,6 +10,7 @@ module GrowlingTest
     end
     
     def attach_to_mediator_with_growl
+      @already_outputted = false
       @mediator.add_listener(Test::Unit::TestResult::FAULT, &method(:display_fault_with_growl))
       @mediator.add_listener(Test::Unit::TestCase::FINISHED, &method(:display_finished_with_growl))
       @mediator.add_listener(Test::Unit::UI::TestRunnerMediator::FINISHED, &method(:all_finished_with_growl))
