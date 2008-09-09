@@ -44,7 +44,7 @@ class Growl
     end
   end
   
-  def all_finished(title, content='')
+  def all_finished(title, content='Oh! All Tests Finished')
     with_script_compiled(NOTIFY_SCPT) do |script|
       icon = (@success ? FINISHED_ICON : FAILURE_ICON).inspect
       system silent("osascript #{script} 'All Tests Finished' #{title.inspect} #{content.inspect} #{icon}")

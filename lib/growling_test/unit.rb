@@ -17,19 +17,30 @@ module GrowlingTest
     end
     
     def display_finished_with_growl(name)
+      if @already_outputted
+        @already_outputted = false
+        return
+      end
       method_name, class_name = names(name)
       Growl.instance.display_finished(class_name, method_name)
+    rescue Interrupt, SystemExit => e
+      raise e
     rescue Exception => e
     end
     
     def display_fault_with_growl(fault)
+      @already_outputted = true
       method_name, class_name = names(fault.test_name)
       Growl.instance.display_fault("#{fault.class.name.split("::").last}: #{class_name}", method_name)
+    rescue Interrupt, SystemExit => e
+      raise e
     rescue Exception => e
     end
     
     def all_finished_with_growl(elapsed_time)
       Growl.instance.all_finished("Finished in #{elapsed_time} seconds.")
+    rescue Interrupt, SystemExit => e
+      raise e
     rescue Exception => e
     end
     

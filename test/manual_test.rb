@@ -5,6 +5,10 @@ require 'growling_test'
 GROWLING_TEST_ENV = 'test'
 
 class ManualTest < Test::Unit::TestCase
+  def test_x
+    raise 'x'
+  end
+  
   100.times do |index|
     define_method("test_index_#{index}".to_sym) {sleep(0.1)}
   end
