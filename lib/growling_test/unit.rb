@@ -10,7 +10,7 @@ module GrowlingTest
     end
     
     def attach_to_mediator_with_growl
-      @already_outputted = false
+      @already_growled = false
       @mediator.add_listener(Test::Unit::TestResult::FAULT, &method(:display_fault_with_growl))
       @mediator.add_listener(Test::Unit::TestCase::FINISHED, &method(:display_finished_with_growl))
       @mediator.add_listener(Test::Unit::UI::TestRunnerMediator::FINISHED, &method(:all_finished_with_growl))
@@ -18,8 +18,8 @@ module GrowlingTest
     end
     
     def display_finished_with_growl(name)
-      if @already_outputted
-        @already_outputted = false
+      if @already_growled
+        @already_growled = false
         return
       end
       method_name, class_name = names(name)
@@ -30,7 +30,7 @@ module GrowlingTest
     end
     
     def display_fault_with_growl(fault)
-      @already_outputted = true
+      @already_growled = true
       method_name, class_name = names(fault.test_name)
       Growl.instance.display_fault("#{fault.class.name.split("::").last}: #{class_name}", method_name)
     rescue Interrupt, SystemExit => e
